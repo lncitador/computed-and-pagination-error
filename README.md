@@ -7,13 +7,13 @@ This repository has been created to demonstrate an error that occurs when passin
 1. Clone this repository to your local environment:
 
 ```bash
-git clone https://github.com/your-username/repository-name.git
+git clone https://github.com/lncitador/computed-and-pagination-error.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd repository-name
+cd computed-and-pagination-error
 ```
 
 3. Install project dependencies:
