@@ -1,0 +1,117 @@
+{
+  "name": "@adonisjs/inertia",
+  "description": "Official Inertia.js adapter for AdonisJS",
+  "version": "1.0.0-25",
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "main": "build/index.js",
+  "type": "module",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": "./build/index.js",
+    "./types": "./build/src/types.js",
+    "./services/main": "./build/services/inertia.js",
+    "./inertia_middleware": "./build/src/inertia_middleware.js",
+    "./inertia_provider": "./build/providers/inertia_provider.js",
+    "./plugins/edge": "./build/src/plugins/edge/plugin.js",
+    "./plugins/api_client": "./build/src/plugins/japa/api_client.js",
+    "./client": "./build/src/plugins/vite.js",
+    "./helpers": "./build/src/helpers.js"
+  },
+  "scripts": {
+    "clean": "del-cli build",
+    "copy:templates": "copyfiles --up 1 \"stubs/**/*.stub\" build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext=.ts",
+    "format": "prettier --write .",
+    "quick:test": "node --enable-source-maps --loader=ts-node/esm bin/test.ts",
+    "pretest": "npm run lint",
+    "test": "c8 npm run quick:test",
+    "prebuild": "npm run lint && npm run clean",
+    "build": "tsup-node",
+    "postbuild": "npm run copy:templates",
+    "release": "release-it",
+    "version": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@poppinss/utils": "^6.7.3",
+    "crc-32": "^1.2.2",
+    "edge-error": "^4.0.1",
+    "html-entities": "^2.5.2",
+    "locate-path": "^7.2.0",
+    "luxon": "^3.4.4",
+    "qs": "^6.12.0"
+  },
+  "peerDependencies": {
+    "@adonisjs/core": "^6.2.0",
+    "@adonisjs/lucid": "^20.0.0",
+    "@adonisjs/session": "^7.0.0",
+    "@adonisjs/vite": "^3.0.0-8",
+    "@japa/api-client": "^2.0.0",
+    "edge.js": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@japa/api-client": {
+      "optional": true
+    }
+  },
+  "author": "Julien Ripouteau <julien@ripouteau.com>,adonisjs",
+  "license": "MIT",
+  "keywords": [
+    "inertia",
+    "adonisjs"
+  ],
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/package"
+  },
+  "prettier": "@adonisjs/prettier-config",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): ${version}",
+      "tagAnnotation": "v${version}",
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}",
+      "web": true
+    }
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**",
+      "tests_helpers/**"
+    ]
+  },
+  "tsup": {
+    "entry": [
+      "./index.ts",
+      "./src/types.ts",
+      "./src/helpers.ts",
+      "./src/plugins/vite.ts",
+      "./services/inertia.ts",
+      "./src/inertia_middleware.ts",
+      "./providers/inertia_provider.ts",
+      "./src/plugins/edge/plugin.ts",
+      "./src/plugins/japa/api_client.ts"
+    ],
+    "outDir": "./build",
+    "clean": true,
+    "format": "esm",
+    "dts": true,
+    "target": "esnext"
+  },
+  "yalcSig": "e2d06a1ab7983c7ad563fabff70d55d9"
+}
