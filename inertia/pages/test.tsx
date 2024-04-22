@@ -1,13 +1,11 @@
 import { Head } from '@inertiajs/react'
-import { InferPageProps } from '@adonisjs/inertia/types'
-
+import { InferPageProps } from '#types/inertia'
+// import { InferPageProps } from '@adonisjs/inertia/types'
 import TestController from '#controllers/tests_controller'
-import Post from '#models/post'
 
-type Props = InferPageProps<TestController, 'handle'>
-//    ^^ is {}
+type Props = InferPageProps<TestController, 'index'>
 
-export default function Home({ user, posts }: any) {
+export default function Home({ posts, user }: Props) {
   return (
     <>
       <Head title="Test" />
@@ -21,14 +19,14 @@ export default function Home({ user, posts }: any) {
             <strong>ID:</strong> {user.id}
           </div>
           <div>
-            <strong>Name:</strong> {user.name}
+            <strong>Name:</strong> {user.fullName}
             <strong>Email:</strong> {user.email}
           </div>
         </div>
 
         <div>
           <h2>Posts</h2>
-          {posts.data?.map((post: Post) => (
+          {posts.data?.map((post) => (
             <div key={post.id}>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
