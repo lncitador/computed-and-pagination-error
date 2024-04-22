@@ -1,4 +1,3 @@
-/// <reference path="../../adonisrc.ts" />
 import '../css/app.css'
 import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'

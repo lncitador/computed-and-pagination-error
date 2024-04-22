@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "packages": {
+    "@adonisjs/inertia": {
+      "version": "1.0.0-25",
+      "signature": "e2d06a1ab7983c7ad563fabff70d55d9",
+      "file": true,
+      "replaced": "1.0.0-25"
+    }
+  }
+}
