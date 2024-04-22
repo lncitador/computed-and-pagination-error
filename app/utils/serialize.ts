@@ -3,13 +3,13 @@ import { BaseModel } from '@adonisjs/lucid/orm'
 import { Infer, InferTypeModel, Prettify } from '../types/lucid.js'
 import { SimplePaginator } from '@adonisjs/lucid/database'
 
-export function serializeModel<T extends LucidModel, R extends InstanceType<T>>(
+function serializeModel<T extends LucidModel, R extends InstanceType<T>>(
   model: R
 ): InferTypeModel<R>
-export function serializeModel<T extends LucidModel, R extends InstanceType<T>>(
+function serializeModel<T extends LucidModel, R extends InstanceType<T>>(
   model: R[]
 ): InferTypeModel<R>[]
-export function serializeModel<T extends LucidModel, R extends InstanceType<T>>(model: R | R[]) {
+function serializeModel<T extends LucidModel, R extends InstanceType<T>>(model: R | R[]) {
   if (Array.isArray(model)) {
     return model.map((m) => serializeModel(m))
   }
@@ -17,7 +17,7 @@ export function serializeModel<T extends LucidModel, R extends InstanceType<T>>(
   return model.serialize() as R
 }
 
-export function serializePagination<
+function serializePagination<
   T extends LucidModel,
   R extends InstanceType<T>,
   M extends ModelPaginatorContract<R>,

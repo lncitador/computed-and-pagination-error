@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react'
-import { InferPageProps } from '#types/inertia'
-// import { InferPageProps } from '@adonisjs/inertia/types'
+// import { InferPageProps } from '#types/inertia'
+import { InferPageProps } from '@adonisjs/inertia/types'
 import TestController from '#controllers/tests_controller'
 
 type Props = InferPageProps<TestController, 'index'>
